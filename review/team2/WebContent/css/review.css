@@ -1,0 +1,47 @@
+@charset "EUC-KR";
+
+		header {
+            width: 1080px;
+            margin: 0 auto;
+        }
+        header p {
+            width: 880px;
+            height: 20px;
+            text-align: center;
+            line-height: 15px;
+            vertical-align: middle; 
+            display: inline-block;
+            font-size: 30px;
+        }
+	
+		.write-submit {
+            width: 80px;
+            height: 23px;
+            border: none;
+            background-color: rgb(245, 223, 77);
+            border-radius: 0.2em;
+            color: black;
+            font-size: 13px;
+        }
+
+        .write-submit:hover {
+            background-color: rgb(255, 165, 0);
+            transition: 0.3s;
+        }
+        
+        .rating .rate_radio + label {
+  		  position: relative;
+ 		   display: inline-block;
+ 		   margin-left: -4px;
+		    z-index: 10;
+		    width: 20px;
+    		height: 30px;
+    		background-image: url('../images/starrate.png');
+    		background-repeat: no-repeat;
+    		background-size: 60px 60px;
+    		cursor: pointer;
+    		background-color: #f0f0f0;
+		}
+		.rating .rate_radio:checked + label {
+    		background-color: #ff8;
+		}
