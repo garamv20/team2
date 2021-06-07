@@ -60,8 +60,7 @@ td{
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			//있는대로 하나씩 하나씩 출력하자.
-			//물품 번호에는 링크를 줘서 수정할 수 있게, 마지막에는 삭제버튼 있어서 삭제하도록
-			out.write("<td><a href='edit_item.jsp?item_number="+rs.getInt(1)+"'>"+rs.getInt(1)+"</a></td>"
+			out.write("<td>"+rs.getInt(1)+"</td>"
 					+ "<td>"+rs.getString(2)+"</td>"
 					+ "<td>"+rs.getString(3)+"</td>"
 					+ "<td>"+rs.getString(4)+"</td>"
@@ -72,6 +71,7 @@ td{
 					+ "<td>"+rs.getInt(9)+"</td>"
 					+ "<td>"+rs.getString(10)+"</td>"
 					+ "<td>"+rs.getString(11)+"</td>"
+					+ "<td><a href='edit_item.jsp?item_number="+rs.getInt(1)+"'>"+"상품 수정</a></td>"
 					+ "<td><a href='delete_item_ok.jsp?item_number="+rs.getInt(1)+"'>상품 삭제</a></td></tr>"
 					);
 		}

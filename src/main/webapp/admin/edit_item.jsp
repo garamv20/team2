@@ -83,6 +83,8 @@
 <td><input type="text" name="item_register_date" value="<%=item_register_date%>"></td></tr>
 <tr><td>메모</td>
 <td><input type="text" name="item_memo" value="<%=item_memo%>"></td></tr>
+<tr><td>상품 이미지</td><td><input type="file" name="item_image"></td></tr>
+<tr><td>상품설명 이미지</td><td><input type="file" name="item_explain_image"></td></tr>
 <tr><td></td><td><input type="button" name="edit" value="수정하기" onClick="click_edit()"></td></tr>
 </table>
 </form>

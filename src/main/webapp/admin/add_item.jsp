@@ -29,6 +29,8 @@
 <td><input type="number" name="item_remains"></td></tr>
 <tr><td>메모</td>
 <td><input type="text" name="item_memo"></td></tr>
+<tr><td>상품 이미지</td><td><input type="file" name="item_image"></td></tr>
+<tr><td>상품설명 이미지</td><td><input type="file" name="item_explain_image"></td></tr>
 <tr><td></td><td><input type="button" name="register" value="등록하기" onClick="click_register()"></td></tr>
 <script>
 function click_register(){
