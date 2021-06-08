@@ -2,6 +2,6 @@
 1. Pull 또는 다운로드 받는다. (https://github.com/garamv20/team2)
 2. 이클립스 > OpenProject ... > Directory 버튼 (zip파일로 받은 경우 Archive 버튼)
 3. 소스파일 경로 : src > main > webapp > 각 분류별 폴더
-
+4. 자바 클래스 : src/main/java > 각 기능별 클래스
 jsp, html, css, js 파일은 같은 폴더에 뒀습니다.
 이미지파일은 src > main > webapp > images 폴더에 뒀습니다.
