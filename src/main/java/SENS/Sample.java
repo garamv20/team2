@@ -3,11 +3,9 @@ package SENS;
 public class Sample {
 
 	public static void main(String[] args) {
-		Send.SMS("01048516339", "Å×½ºÆ® ¸Ş½ÃÁö Àü¼Û", "ncp:sms:kr:262195421504:message_sender", "1zB1FNZZofZBbLlwgesB", "wRREJhsLJRf46hyM28laTvoqp5yIpnndEuRYeM9A");
-		//Âü°í»çÇ×
-		//SMS´Â ´Ü¹®, LMS´Â Àå¹®
-		//¼ö½ÅÀÚ ¹øÈ£, ¸Ş½ÃÁö ³»¿ë, Å°, Å°, Å°
-		//¹ß½Å¹øÈ£´Â 01048516339·Î °íÁ¤, º¯°æ ºÒ°¡
+		Send.SMS("01048516339", "í…ŒìŠ¤íŠ¸ ë©”ì‹œì§€", "ncp:sms:kr:262195421504:message_sender", "1zB1FNZZofZBbLlwgesB", "wRREJhsLJRf46hyM28laTvoqp5yIpnndEuRYeM9A");
+		//SMS ë‹¨ë¬¸, LMS ì¥ë¬¸
+		//ìˆ˜ì‹ ì, ë©”ì‹œì§€, í‚¤, í‚¤, í‚¤ í˜•íƒœ, ë°œì‹ ìëŠ” 01048516339 ê³ ì •
 	}
 
 }

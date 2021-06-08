@@ -1,4 +1,4 @@
-<%@page import="com.portfolio.shoppingmall.HanConv"%>
+<%@page import="myUtil.HanConv"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
