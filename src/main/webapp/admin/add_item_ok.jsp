@@ -1,4 +1,4 @@
-<%@page import="company.portfolio.shoppingmall.HanConv"%>
+<%@page import="com.portfolio.shoppingmall.HanConv"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

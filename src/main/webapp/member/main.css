@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
+*{
+    text-align: center;
+    padding: 0;
+   
+    
+
+
+}
+/* 스크롤 사라지게  */
+body{-ms-overflow-style:none; }
+body::-webkit-scrollbar { display:none; }
+
+
+/* 헤더 부분 (쇼핑몰 이름 + 로고 + 로그인 ) */
+header{
+    width: 1850px;
+    /* border : 2px solid red; */
+    line-height: 150px;
+    height : 150px;
+    font-size: 30px;
+    font-weight: 600;
+    border-bottom: 2px solid black;
+    font-family: 'Stylish', sans-serif;
+    color: #1bc8f3;
+    
+
+}
+/* 로고 넣을 구역? */
+/* #logoArea{
+    width: 150px;
+    height: 100%;
+    float: left;	
+    text-align: center;
+
+    } */
+/* #logo{width: 200px;
+    height: 150px;
+} */
+/* 로그인 넣을 구역? */
+#loginArea{
+    padding-top: 10px;
+    width: 300px;
+    height: 100px;
+    float: right;	
+    text-align: left;
+    /* background-color: tomato; */
+    font-size: 15px; 
+    line-height: 10px;
+    font-family: none;
+      font-family: 'Stylish', sans-serif;
+    }
+    #loginArea ul li{
+        list-style: none;
+        float: left;
+        margin-left: 20px;
+        margin-bottom: 80px;
+        
+    }
+    #loginArea .tab{
+        
+        float: right;
+    }
+/* 상단 네비 구역 */
+nav{
+    /* border : 2px solid blue; */
+    height: 50px;
+    border-bottom: 2px solid black;
+}
+nav ul li{
+	font-family: 'Stylish', sans-serif;
+    width: 50px;
+    margin-left: 100px;
+    list-style: none;
+    /* background-color: white; */
+    float: left;
+    font-size: 25px;
+    vertical-align: middle;
+    font-weight: 500;
+}
+  li a{
+    text-decoration: none;
+    color: black;
+}
+.menuLink{
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    font-size: 20px;
+    
+}
+.menuLink:hover{
+    color: white;
+    background-color:#1bc8f3 ;
+
+}
+/* 왼쪽 사이드바 구역 */
+
+aside{
+   font-family: 'Stylish', sans-serif;
+    float: left;
+    width: 100px;
+    height: 670px;
+
+}
+aside ul li{
+    padding-bottom: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+}
+li.hot::after{
+    padding: 1px;
+    font-weight: 400;
+    content: "New!";
+    font-size: 15px;
+    border-radius: 3px;
+    background-color: red;
+    color: #fff;
+}
+/* 이미지나 판매 상품 보여줄 화면  구역 */
+section{
+    /* border : 2px solid green; */
+    height : 670px;
+    line-height: 650px;
+}
+
+/* 푸터  구역 */
+footer {
+    /* background-color: darkorange; */
+    clear: both;
+    height: 28px;
+    font-size: 20px;
+        font-family: 'Stylish', sans-serif;
+}
