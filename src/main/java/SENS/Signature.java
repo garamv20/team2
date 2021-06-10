@@ -6,7 +6,6 @@ import java.util.Base64.Encoder;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import sun.misc.BASE64Encoder;
 
 public class Signature {
 	public static String makeSignature(String timeStamp, String api_key, String access_key, String secret_key){
