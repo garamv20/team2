@@ -15,10 +15,10 @@
 	//서버 접속
 	try{
 		//오라클 DB 접속, scott/tiger
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "scott";
-		String password = "tiger";
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:mysql://localhost:3306/team2_db";
+		String user = "team2";
+		String password = "1234";
+		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, user, password);
 		
 		PreparedStatement pstmt = null;

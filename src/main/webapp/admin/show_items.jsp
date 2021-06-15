@@ -31,7 +31,7 @@ td{
 <table id="items">
 <tr>
 <td>상품번호</td>
-<td>상품명</td>
+<td>상품종류</td>
 <td>종류1</td>
 <td>종류2</td>
 <td>옵션</td>
@@ -47,10 +47,10 @@ td{
 	boolean show_items_success;
 	try{
 		//오라클 DB 접속, scott/tiger
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "scott";
-		String password = "tiger";
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:mysql://localhost:3306/team2_db";
+		String user = "team2";
+		String password = "1234";
+		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, user, password);
 
 		PreparedStatement pstmt = null;
@@ -67,12 +67,6 @@ td{
 					+ "<td>"+rs.getString(5)+"</td>"
 					+ "<td>"+rs.getInt(6)+"</td>"
 					+ "<td>"+rs.getInt(7)+"</td>"
-					+ "<td>"+rs.getInt(8)+"</td>"
-					+ "<td>"+rs.getInt(9)+"</td>"
-					+ "<td>"+rs.getString(10)+"</td>"
-					+ "<td>"+rs.getString(11)+"</td>"
-					+ "<td><a href='edit_item.jsp?item_number="+rs.getInt(1)+"'>"+"상품 수정</a></td>"
-					+ "<td><a href='delete_item_ok.jsp?item_number="+rs.getInt(1)+"'>상품 삭제</a></td></tr>"
 					);
 		}
 
