@@ -14,7 +14,7 @@
 
 	//辑滚 立加
 	try{
-		//坷扼努 DB 立加, scott/tiger
+		//MySQL 立加, team2/1234
 		String url = "jdbc:mysql://localhost:3306/team2_db";
 		String user = "team2";
 		String password = "1234";

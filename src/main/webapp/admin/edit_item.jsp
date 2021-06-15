@@ -1,3 +1,5 @@
+<%@page import="java.sql.Date"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -17,23 +19,19 @@
 <body>
 <%
 	String item_number = request.getParameter("item_number");
+	String item_type = null;
 	String item_name = null;
-	String item_type1 = null;
-	String item_type2 = null;
-	String item_option = null;
-	String item_price = null;
-	String item_discount_rate = null;
-	String item_sells = null;
-	String item_remains = null;
-	String item_register_date = null;
+	int item_price = 0;
+	double item_discount_rate = 0;
+	Date item_register_date = null;
 	String item_memo = null;
 	
 	try{
-		//오라클 DB 접속, scott/tiger
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "scott";
-		String password = "tiger";
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//MySQL 접속, team2/1234
+		String url = "jdbc:mysql://localhost:3306/team2_db";
+		String user = "team2";
+		String password = "1234";
+		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(url, user, password);
 
 		PreparedStatement pstmt = null;
@@ -44,16 +42,12 @@
 		rs = pstmt.executeQuery();
 		//값들을 하나하나 넣어주기
 		while(rs.next()){
-			item_name = rs.getString(2);
-			item_type1 = rs.getString(3);
-			item_type2 = rs.getString(4);
-			item_option = rs.getString(5);
-			item_price = rs.getString(6);
-			item_discount_rate = rs.getString(7);
-			item_sells = rs.getString(8);
-			item_remains = rs.getString(9);
-			item_register_date = rs.getString(10);
-			item_memo = rs.getString(11);
+			item_type = rs.getString(2);
+			item_name = rs.getString(3);
+			item_price = rs.getInt(4);
+			item_discount_rate = rs.getDouble(5);
+			item_register_date = rs.getDate(6);
+			item_memo = rs.getString(7);
 		}
 
 		System.out.println("DB 접속 성공");
@@ -61,38 +55,40 @@
 		System.out.println("DB 접속 실패");
 	}
 %>
-<form name="form" method="post" action="edit_item_ok.jsp">
+
+<form name="form" method="post" action="add_item_ok.jsp">
 <table>
-<tr><td>상품 번호</td>
-<td><input type="text" name="item_number" value="<%=item_number%>" readonly></td></tr>
-<tr><td>상품명</td>
-<td><input type="text" name="item_name" value="<%=item_name%>"></td></tr>
-<tr><td>종류1</td>
-<td><input type="text" name="item_type1" value="<%=item_type1%>"></td></tr>
-<tr><td>종류2</td>
-<td><input type="text" name="item_type2" value="<%=item_type2%>"></td></tr>
-<tr><td>옵션</td>
-<td><input type="text" name="item_option" value="<%=item_option%>"></td></tr>
+<tr><td>상품번호</td><td><%=item_number %></td></tr>
+<tr><td>상품종류</td>
+<td><select name="item_type">
+<option value="아우터">아우터</option>
+<option value="상의">상의</option>
+<option value="하의">하의</option>
+<option value="언더웨어">언더웨어</option>
+<option value="슈즈">슈즈</option>
+<option value="악세사리">악세사리</option>
+</select></td></tr>
+<tr><td>상품명*</td>
+<td><input type="text" name="item_name"></td></tr>
+<tr><td>가격*</td>
+<td><input type="number" name="item_price"></td></tr>
 <tr><td>할인률</td>
-<td><input type="text" name="item_discount_rate" value="<%=item_discount_rate%>"></td></tr>
-<tr><td>판매량</td>
-<td><input type="text" name="item_sells" value="<%=item_sells%>"></td></tr>
-<tr><td>재고량</td>
-<td><input type="text" name="item_remains" value="<%=item_remains%>"></td></tr>
-<tr><td>등록일</td>
-<td><input type="text" name="item_register_date" value="<%=item_register_date%>"></td></tr>
+<td><input type="number" name="item_discount_rate" value="0"></td></tr>
+<tr><td>등록일자</td><td><%=item_register_date %></td></tr>
 <tr><td>메모</td>
-<td><input type="text" name="item_memo" value="<%=item_memo%>"></td></tr>
-<tr><td>상품 이미지</td><td><input type="file" name="item_image"></td></tr>
-<tr><td>상품설명 이미지</td><td><input type="file" name="item_explain_image"></td></tr>
-<tr><td></td><td><input type="button" name="edit" value="수정하기" onClick="click_edit()"></td></tr>
+<td><input type="text" name="item_memo"></td></tr>
+<tr><td>상품 이미지*</td><td><input type="file" name="item_image"></td></tr>
+<tr><td>상품설명 이미지*</td><td><input type="file" name="item_explain_image"></td></tr>
+<tr><td></td><td><input type="button" name="register" value="등록하기" onClick="click_register()"></td></tr>
 </table>
 </form>
 <script>
-	function click_edit(){
-		//예외처리
-		form.submit();
-	}
+	//불러온 값들을 토대로 빈칸을 채워주기
+	form.item_type.value = "<%=item_type%>";
+	form.item_name.value = "<%=item_name%>";
+	form.item_price.value = <%=item_price%>;
+	form.item_discount_rate = <%=item_discount_rate%>;
+	form.item_memo = "<%=item_memo%>";
 </script>
 <script>
 	if("<%=verified%>" != "verified"){
