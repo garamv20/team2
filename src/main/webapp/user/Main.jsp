@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Indie+Flower&family=Sigmar+One&family=Staatliches&family=Suravaram&family=Titan+One&display=swap" rel="stylesheet">
+<title>MoodOn_Main</title>
+ <link rel="stylesheet" href="main.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">  
+<!-- <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Indie+Flower&family=Sigmar+One&family=Staatliches&family=Suravaram&family=Titan+One&display=swap" rel="stylesheet"> -->
 	<script type="text/javascript" src="js/jquery.js"></script> 
 	<script type="text/javascript">
 		$(document).ready(function(){ 
@@ -16,257 +19,69 @@
 		});
 		});
 	</script>
-	<style type="text/css">
-		/*---------- 폰트 -----------*/
-		.sur-font{
-			font-family: "Suravaram", sans-serif;
-			font-size: 13px;
-			color: gray;
-		}
-		
-		/*---------- 헤더 -----------*/
-		header {
-			width: 1500px;
-			margin: 5px auto;
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			background: rgb(251,251,251);
-		}
-		header div {
-			display: inline-block;
-		}
-		header a {
-			color: gray;
-			text-decoration: none;
-		}
-		header #lefthead a:hover {
-			font-family: "Suravaram", sans-serif;
-			color: black;
-			font-weight: bold;			
-		}
-		header #righthead a:hover {
-			font-family: "Suravaram", sans-serif;
-			color: black;
-			font-weight: bold;			
-		}
-		#lefthead{
-			font-family: "Suravaram", sans-serif;
-			float: left;
-		}
-		#righthead{
-			font-family: "Suravaram", sans-serif;
-			float: right;		
-		}
-		.box{
-			padding-top: 30px;
-		}
-		/*--------- 메뉴바 ---------*/
-        #nav {
-            height: 50px;
-            padding: 0 50px;
-        }
+	
+<script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
+<%
 
-        .menu {
-            width: 900px;
-            margin: 0 auto;
-        }
+String id =null;
+Cookie[] c = request.getCookies();
 
-        .menu p {
-            width: 120px;
-            text-align: center;
-            display: inline-block;
-        }
-        ul p{
-            width: 120px;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .menu p a {
-			font-family: "Aclonica", sans-serif;
-            font-weight: bold;
-            font-size: 15px;
-            color: #444;
-            text-decoration: none;
-        }
-        ul p a {
-			font-family: "Aclonica", sans-serif;
-            font-weight: bold;
-            font-size: 15px;
-            text-decoration: none;
-        }
-
-        .menu p a:hover {
-			font-family: "Aclonica", sans-serif;
-            font-size: 16px;
-            font-weight: bolder;
-            color:  rgb(31, 95, 212);
-            transition: 0.3s;
-        }
-        ul li p a:hover {
-        	font-family: "Aclonica", sans-serif;
-            font-size: 16px;
-            font-weight: bolder;
-            color:  rgb(31, 95, 212);
-            transition: 0.3s;
-        }
-        ul, li {
-            list-style:none;
-            margin:0;
-            padding:0;
-        }
-        ul.myMenu {
-        }
-        ul.myMenu > li {
-            display:inline-block;
-            width:110px;
-            padding:0 10px;
-            position:relative;
-            margin-left: 50px;
-        }
-        ul.myMenu > li:hover {
-            /* background:#fff; */
-        }
-        ul.myMenu > li ul.submenu {
-            display:none;
-            position:absolute;
+if (c != null) {
+	for(Cookie cf : c){
+		if (cf.getName().equals("id")) {
+			String ids = cf.getValue();
+			session.setAttribute("id", ids);
+			
 		}
-        ul.myMenu > li:hover ul.submenu {
-            display:block;
-        }
-        ul.myMenu > li ul.submenu > li {
-        	font-family: "Aclonica", sans-serif;
-            display:inline-block;
-            width:110px;
-            padding:0 8px;
-            background: lightgray;
-            opacity: 0.8;
-            border:1px solid rgb(245, 245, 245);
-            border-radius: 2px;
-        }
-        ul.myMenu > li ul.submenu > li:hover {
-            background: rgb(253,253,253);
-        }
-        a {
-            text-decoration: none;
-            color: black;
-        }
-        .menu{
-        	margin-left: 50px;
-        	width: auto;
-        }
-        
-        /*--------- 슬라이드바 ----------*/
-        #slidemenu{
-        	position: absolute;
-        	margin-right: 20px;
-        	top: 50px;
-        	right: 10px;
-        }
-		#slidemenu img{
-			width: 40px;
-			height: 40px;
-		}
-		/*---------- 타이틀 ---------*/
-		#title {
-			padding-left: 15px;
-			padding-bottom: 20px;
-			text-align: center;
-		}
-		#title a{
-			font-family: "Sigmar One", sans-serif;
-			font-size: 30px;
-			color: black;
-			text-decoration: none;
-		}
-		
-		/*--------- 바디 ----------*/
-		body {
-			width: 1200px;
-			margin: 0 auto;
-			padding-top: 120px;
-		}
-		
-		#weeklyb p{
-			font-family: "Indie Flower", sans-serif;
-			font-size: 20px;
-		}
-		
-		.image{
-			text-align: center;
-		}
-		.img{
-			width: 300px;
-			height: 450px;
-			float: right;
-		}
-		#chatbot{
-		}
-		.clothes {
-			display: inline-block;
-		}
-		.clothes span{
-			font-family: "Titan One", sans-serif;
-		}
-		.clothes img{
-			width: 280px;
-			height: 300px;
-		}
-		#likeimg{
-			width: 20px;
-			height: 15px;
-			float: right;
-		}
-		.clear {
-			clear: both;
-		}
-		/*--------- 푸터 ----------*/
-		footer{
-			width: 1500px;
-			margin-top: 20px;
-			background: rgb(242,242,242);
-			text-align: center;
-			padding-top: 30px;
-			padding-bottom: 30px;
-			margin-left: -150px;
-		}
-		.sur-font a {
-			font-size: 15px;
-			padding-right: 12px;
-		}
-	</style>
+	}
+	id =(String) session.getAttribute("id");
+}
+%>
 </head>
 <body>
+<div id="wrap">
 	<header>
-		<div id="lefthead">
-			<a href="#">MAIN</a>
-		</div>
-		<div id="righthead">
-			<a href="#">LOGIN</a> | 
-			<a href="#">JOIN</a> | 
-			<a href="#">ORDER</a> | 
-			<a href="#">CART</a> | 
-			<a href="#">MY SHOP</a>
-		</div>
-		<div class="box">
-			<div id="title">
-				<a href="#">Green Street</a>
-			</div>
+	  <div class="top">
+        <div class="top__search">
+          <li><input type="text"></li>
+          <li><a href=""><i class="fas fa-search"></i></a></li>
+        </div>
+        <ul class="top__list">
+      <!--   로그인 상태는 > HOME 
+       		 비로그인 상태는 > LOGIN 보이게  -->
+        <% 
+        if(id==null){
+        	%>
+          <li><a href="Login.jsp">LOGIN</a></li>
+         <%  
+        }else{
+        	%> 
+        	 <li><a href="Main.jsp">HOME</a></li>
+        	<% 
+        }
+        %>
+          <li><a href="#">JOIN</a></li>
+          <li><a href="mypage.jsp">MY PAGE</a></li>
+          <li><a href="cart.html">CART</a></li>
+        </ul>
+      </div>
+
+      <div class="logo">
+        <img src="images/pinterest_profile_image.jpg" alt="">
+      </div>
 			<div id="nav">
 				<div class="menu">
 					<ul class="myMenu">
-						<li class="menu1"><p><a href="#">MEN's</a></p>
+						<li class="menu1"><p><a href="#">Top</a></p>
 							<ul class="menu1 submenu">
-								<li><p><a href="#">Top</a></p></li>
-								<li><p><a href="#">Pants</a></p></li>
+								<li><p><a href="#">Jacket</a></p></li>
+								<li><p><a href="#">Shirt</a></p></li>
 							</ul>
 						</li>
-						<li class="menu2"><p><a href="#">WOMEN's</a></p>
+						<li class="menu2"><p><a href="#">Pants</a></p>
 							<ul class="menu2 submenu">
-								<li><p><a href="#">Top</a></p></li>
-								<li><p><a href="#">Pants</a></p></li>
+								<li><p><a href="#">Jeans</a></p></li>
+								<li><p><a href="#">Skirt</a></p></li>
 							</ul>
 						</li>
 						<li class="menu3"><p><a href="#">SHOES&BAG</a></p>
@@ -284,7 +99,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		
 	</header>
 	
 	<div id="slidemenu">
@@ -300,25 +115,25 @@
 		<div id="weeklyb">
 				<p>★Weekly Best Item★</p>
 			<div class="clothes">
-				<img src="clothes/cloth1.png"><br>
+				<img src="clothes/cloth1.jpg"><br>
 				<a href="#"><span>상의 1번</span></a>
 				<a href="#"><img src="clothes/like.png" id="likeimg"></a><br>
 				<span>29,900원</span>
 			</div>
 			<div class="clothes">
-				<img src="clothes/cloth2.png"><br>
+				<img src="clothes/cloth2.jpg"><br>
 				<a href="#"><span>상의 2번</span></a>
 				<a href="#"><img src="clothes/like.png" id="likeimg"></a><br>
 				<span>29,900원</span>
 			</div>
 			<div class="clothes">
-				<img src="clothes/cloth3.png"><br>
+				<img src="clothes/cloth3.jpg"><br>
 				<a href="#"><span>상의 3번</span></a>
 				<a href="#"><img src="clothes/like.png" id="likeimg"></a><br>
 				<span>29,900원</span>
 			</div>
 			<div class="clothes">
-				<img src="clothes/cloth4.png"><br>
+				<img src="clothes/cloth4.jpg"><br>
 				<a href="#"><span>상의 4번</span></a>
 				<a href="#"><img src="clothes/like.png" id="likeimg"></a><br>
 				<span>29,900원</span>
@@ -331,18 +146,24 @@
 		</div>
 	</section>
 	<div class="clear"></div>
-	<footer>
-		<div>
-            <span class="sur-font">
-            	<a href="#">AGREEMENT</a>&nbsp;
-            	<a href="#">PRIVACY POLICY</a>&nbsp;
-            	<a href="#">GUIDE</a>&nbsp;<br>
-            	COMPANY: 그린스트릿<br>
-            	ADDRESS: 부산광역시 그린구 그린로 123<br>
-            	BUSINESS LICENSE:123-45-67890<br>
-	        	Copyright. 그린스트릿 all rights reserved.
-	        </span>
-        </div>
-	</footer>
+	 <footer>
+      <div class="info1">
+        <li>
+          <h3>about us</h3>
+          <p>company: MOODON</p>
+          <p>business no: 123-45-67890</p>
+          <p>tel. 02-1111-1111</p>
+          <p>address: 부산광역시 그린구 그린로 123</p>
+          <p><i>Copyright. MOODON all rights reserved.</i></p>
+        </li>
+        <li>
+          <h3>C/S CENTER</h3>
+          <p><strong>02-1111-1111</strong></p>
+          <p>mon-fri pm1:00~pm6:00</p>
+          <p>sat, sun, holiday off</p>
+        </li>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

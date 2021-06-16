@@ -1,0 +1,22 @@
+테이블구조 > 가입할때 널값 있으면 오류 있는부분 변경 > 
+
+CREATE TABLE `user` (
+  `u_name` varchar(45) NOT NULL,
+  `u_id` varchar(100) NOT NULL,
+  `u_pw` varchar(100) NOT NULL,
+  `u_phone` varchar(20) NOT NULL,
+  `u_jumin` varchar(13) NOT NULL,
+  `u_email` varchar(100) DEFAULT NULL,
+  `u_address` varchar(100) DEFAULT NULL,
+  `u_point` int DEFAULT '0',
+  `u_grade` varchar(10) DEFAULT '일반회원',
+  PRIMARY KEY (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+로그인 > 회원가입(주소api사용) 비밀번호 옆에 눈알 아이콘 누르면 비밀번호 텍스트로 변환 > 
+
+id제약조건 한글로 가입안됨 (쿠키사용시 한글에러 뜨는데 에러잡긴했습니다 한글로 가입되도 상관은없음) > 비밀번호 찾기 (가입된 아이디와 이름 가지고 비밀번호 알려주기)
+이부분은 나중에 임시비밀번호 + 메일보내기 로 변경예정 
+
+경로 설정 아마 해주셔야 할꺼에요 !

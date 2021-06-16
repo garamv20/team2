@@ -11,10 +11,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
+   font-family: 'Noto Sans KR', sans-serif; 
 }
 #wrap{
   width: 1240px;
+ 
   margin: 0 auto;
 }
 
@@ -58,16 +59,19 @@
 }
 
 .main {
+
 background-color: #FFFFFF;
-width: 400px;
-height: 400px;
+width: 800px;
+height: 800px;
 margin: 7em auto;
 border-radius: 1.5em;
-box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.20);
+
 }
 
+
 .sign {
-font-family: 'Do Hyeon', sans-serif;
+	 font-family: 'Do Hyeon', sans-serif;
 padding-top: 40px;
 color: #1bc8f3;
 /* font-family: 'Stylish', sans-serif; */
@@ -124,6 +128,68 @@ margin-bottom: 27px;
 border: 2px solid rgba(0, 0, 0, 0.18) !important;
 
 }
+.table {
+	padding : 10px;
+	margin-left : 10px;
+	border-radius: 20px;
+	border: 5px solid #1bc8f3;
+	width: 500px;
+	height: 600px;
+	border-spacing: 2px;
+ 	border-collapse: separate;
+	
+}
+.table tr td {
+ 	font-family: 'Do Hyeon', sans-serif;
+	
+}
+
+/* 버튼  */
+.mybtn {
+cursor: pointer;
+font-family: 'Do Hyeon', sans-serif;
+width : 120px;
+border: 0;
+font-size: 15px;
+cursor: pointer;
+border-radius: 10px;
+height: 50px;
+
+}
+.mybtn:hover{
+color: white;
+ background: #1bc8f3;
+}
+.mybtn2 {
+cursor: pointer;
+font-family: 'Do Hyeon', sans-serif;
+width : 120px;
+border: 0;
+font-size: 15px;
+cursor: pointer;
+border-radius: 10px;
+height: 30px;
+
+}
+.mybtn2:hover{
+color: white;
+ background: #1bc8f3;
+}
+.mybtn3 {
+cursor: pointer;
+font-family: 'Do Hyeon', sans-serif;
+width : 50px;
+border: 0;
+font-size: 15px;
+cursor: pointer;
+border-radius: 10px;
+height: 30px;
+
+}
+.mybtn3:hover{
+color: white;
+ background: #1bc8f3;
+}
 
 .submit {
 cursor: pointer;
@@ -136,7 +202,7 @@ padding-right: 40px;
 padding-bottom: 10px;
 padding-top: 10px;
 /* font-family: 'Stylish', sans-serif; */
-margin-left: 35%;
+margin-left: 40%;
 font-size: 15px;
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
@@ -152,7 +218,7 @@ text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
 
 text-decoration: none
 }
-a{
+ a{
 	color: black;
 }
 .info1{
@@ -163,5 +229,9 @@ a{
   justify-content: space-around;
   columns: #424242;
 }
+/* 눈깔색깔 */
 
+.table i{
+	color: #1bc8f3;
+}
 

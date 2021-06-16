@@ -18,6 +18,7 @@
   width: 1240px;
   margin: 0 auto;
 }	
+
 		
 /*---------- 헤더 -----------*/
 .top{
@@ -40,6 +41,7 @@
   color: var(--text-color);
 }
 
+
 .top__search{
   display: flex;
   padding-left: 8px;
@@ -58,25 +60,31 @@
   height: 150px;
   object-fit: cover;
 }
+
 		
-		/*--------- 메뉴바 ---------*/
+/* 	--------- 메뉴바 --------- */
         #nav {
             height: 50px;
             padding: 0 50px;
         }
 
         .menu {
+          
+        	margin-left: 10px;
+       	width: auto;
+        
             width: 1240px;
-            margin: 0 auto;
+            margin: 0 ;
         }
 
         .menu p {
-            width: 120px;
+            width: 150px;
             text-align: center;
             display: inline-block;
+        
         }
-        ul p{
-            width: 120px;
+      ul p{
+            width: 150px;
             text-align: center;
             display: inline-block;
         }
@@ -93,6 +101,7 @@
             font-weight: bold;
             font-size: 15px;
             text-decoration: none;
+          
         }
 
         .menu p a:hover {
@@ -109,7 +118,7 @@
             color:  rgb(31, 95, 212);
             transition: 0.3s;
         }
-        ul, li {
+       ul, li {
             list-style:none;
             margin:0;
             padding:0;
@@ -120,7 +129,7 @@
             width:110px;
             padding:0 10px;
             position:relative;
-            margin-left: 50px;
+            margin-left: 10px;
         }
       
         ul.myMenu > li ul.submenu {
@@ -133,85 +142,58 @@
         ul.myMenu > li ul.submenu > li {
         	font-family: "Aclonica", sans-serif;
             display:inline-block;
-            width:110px;
+            width:150px;
             padding:0 8px;
             background: lightgray;
             opacity: 0.8;
             border:1px solid rgb(245, 245, 245);
             border-radius: 2px;
+           
         }
         ul.myMenu > li ul.submenu > li:hover {
             background: rgb(253,253,253);
         }
-        a {
+      
+       a {
             text-decoration: none;
             color: black;
         }
-        .menu{
-        	margin-left: 50px;
-        	width: auto;
-        }
         
-        /*--------- 슬라이드바 ----------*/
-        #slidemenu{
-        	position: absolute;
-        	margin-right: 20px;
-        	top: 50px;
-        	right: 10px;
-        }
-		#slidemenu img{
-			width: 40px;
-			height: 40px;
-		}
-		/*---------- 타이틀 ---------*/
-		#title {
-			padding-left: 15px;
-			padding-bottom: 20px;
-			text-align: center;
-		}
-		#title a{
-			font-family: "Sigmar One", sans-serif;
-			font-size: 30px;
-			color: black;
-			text-decoration: none;
-		}
+ table.type09 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+
+}
+table.type09 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #369;
+  border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table.type09 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+
+.logout :hover{
+		background-color:  #1bc8f3;
+		color: white;
+}
+   
 		
-		/*--------- 바디 ----------*/
-		
-		
-		#weeklyb p{
-			font-family: "Indie Flower", sans-serif;
-			font-size: 20px;
-		}
-		
-		.image{
-			text-align: center;
-		}
-		.img{
-			width: 300px;
-			height: 450px;
-			float: right;
-		}
-		
-		.clothes {
-			display: inline-block;
-		}
-		.clothes span{
-			font-family: "Titan One", sans-serif;
-		}
-		.clothes img{
-			width: 280px;
-			height: 300px;
-		}
-		#likeimg{
-			width: 20px;
-			height: 15px;
-			float: right;
-		}
-		.clear {
-			clear: both;
-		}
-		/*--------- 푸터 ----------*/
+		/*--------- 푸터 ---------- */
 		.info1{
   background-color: #ddd;
   padding: 20px;
@@ -220,5 +202,5 @@
   justify-content: space-around;
   columns: #424242;
 }
-		
+
 	

@@ -5,14 +5,13 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="findPw.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">  
+ <script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
 </head>
- <link rel="stylesheet" href="login.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">  
-  <title>Document</title>
-  <script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
 <body>
-  <div id="wrap">
+<div id="wrap">
     <header>
       <div class="top">
         <div class="top__search">
@@ -32,16 +31,14 @@
       </div>
     </header>
     <div class="main">
-        <p class="sign" align="center">쇼핑몰 로그인 페이지</p>
+        <p class="sign" align="center">비밀번호 찾기 </p>
         
-        <form class="form1" name="form" id="form" method="post" action="login_ok.jsp">
+        <form class="form1" name="form" id="form" method="post" action="findPw_ok.jsp">
           <input class="un " type="text" align="center" placeholder="ID를 입력해 주세요 " name="u_id" id="u_id">
-          <input class="pass" type="password" align="center" placeholder="Password를 입력해 주세요" name="u_pw" id="u_pwd">
-          <a class="submit" align="center" onClick="click_login()">로그인</a> <br>            
+          <input class="pass" type="text" align="center" placeholder="이름을 입력해 주세요" name="u_name" id="u_name">
+          <a class="submit" align="center" onClick="check()">확인</a> <br>            
           <p class="forgot" align="center">
-          <input type="checkbox" name="loginChk" value="true" >로그인 상태 유지 &nbsp;&nbsp;&nbsp;&nbsp; 
-          <a href="findPw.jsp">비밀번호찾기  </a> &nbsp;&nbsp;&nbsp;&nbsp; 
-          <a href="signup.jsp">가입 하기</a> 
+     
           </p>
           </form>
         </div>
@@ -66,16 +63,16 @@
       </div>
     </footer>
     </div>
-<script>
-function click_login(){
+    <script>
+function check(){
 	if(form.u_id.value == ""){
 		form.u_id.focus();
 		alert("아이디를 입력하세요.");
 		return;
 	}
-	if(form.u_pw.value == ""){
-		form.u_pw.focus();
-		alert("비밀번호를 입력하세요.");
+	if(form.u_name.value == ""){
+		form.u_name.focus();
+		alert("이름을  입력하세요.");
 		return;
 	}
 	form.submit();

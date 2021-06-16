@@ -1,63 +1,72 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="myUtil.HanConv"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="user.UserDBBean"%>
+<%@page import="user.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<%
-String id = request.getParameter("u_id");
-String pwd = request.getParameter("u_pwd");
-try{
-	//ì˜¤ë¼í´ DB ì ‘ì†, scott/tiger
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "scott";
-	String password = "tiger";
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String name =""; //ì„¸ì…˜ì´ìš©í•  ë³€ìˆ˜ 
-	Connection con = DriverManager.getConnection(url, user, password);
+	pageEncoding="EUC-KR"%>
 	
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	pstmt = con.prepareStatement("select * from s_user where u_id=?");
-	pstmt.setString(1, id);
-	rs = pstmt.executeQuery();
-	//ì•„ì´ë””ê°€ ì €ì¥ë˜ì–´ìˆê³ 
-	if(rs.next()){
-		//ë¹„ë°€ë²ˆí˜¸ê°€ ì €ì¥ëœê±°ë‘ ê°™ìœ¼ë©´
-		if(pwd.equals(rs.getString("u_pwd"))){
-			name  = rs.getString("u_name");
-		//ë„¤ì„ ì„¸ì…˜ì— ìœ ì ¸ ì´ë¦„ ê°€ì ¸ì™€ì„œ ì €ì¥
-		session.setAttribute("name", name);
-		%>
-		<script type="text/javascript">
-		alert("ë¡œê·¸ì¸ì„±ê³µ .");
-		location.href="exMain.jsp";
-		</script>
-		<%
-		}
-		//ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¥´ë©´?
-		else{
-			%>
-			<script type="text/javascript">
-			alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
-			location.href="exMain.jsp";
-			</script>
-			<%
-		}
-	}//ì•„ì´ë””ê°€ ì—†ìœ¼ë©´ 
-	else{
-		%>
-		<script type="text/javascript">
-		alert("ë¡œê·¸ì¸ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
-		location.href="exMain.jsp";
-		</script>
-		<%
-	}
-}catch (Exception e) {
-	e.printStackTrace();
-}
 
-%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+
+	String id = HanConv.toKor(request.getParameter("u_id"));
+	String pwd = request.getParameter("u_pw");
+	String loginChk = request.getParameter("loginChk");
+	
+	
+	UserDBBean db = UserDBBean.getInstance();
+	int check = db.userCheck(id, pwd);
+	UserBean ub = db.getUser(id);
+	if (ub == null) {
+	%>
+	<script>
+		alert("Á¸ÀçÇÏÁö ¾Ê´Â È¸¿øÀÔ´Ï´Ù È¸¿ø °¡ÀÔÀ» ÇØÁÖ¼¼¿ä !");
+		history.go(-1);
+	</script>
+	<%
+	} else {
+
+	if (check == 1) {
+		
+		session.setAttribute("id", id);
+		// »ç¿ëÀÚÀÇ ·Î±×ÀÎ À¯Áö ¿©ºÎ¸¦ null Ã¼Å©·Î È®ÀÎ 
+		
+		if (loginChk != null) { // Ã¼Å©ÇÑ °æ¿ì
+			Cookie c = new Cookie("id",URLEncoder.encode( id,"UTF-8"));
+			c.setMaxAge(24 * 60 * 60); //ÄíÅ° À¯Áö ½Ã°£ ÇÏ·ç 
+			c.setPath("/");
+			response.addCookie(c);
+		}
+	%>
+	<script type="text/javascript">
+		alert("  Mood On \n\n ·Î±×ÀÎ ¿Ï·á  ");
+		location.href = "Main.jsp";
+	</script>
+	<%
+	} else if (check == 0) {
+	%>
+	<script>
+		alert("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä");
+		history.go(-1);
+	</script>
+
+	<%
+	} else {
+	/*ÇÊ¿ä¾ø´Â ºÎºĞÀÎµ¥ ¿À·ù ³¯¼öµµ ÀÖÀ¸´Ñ±ñ */
+	%>
+	<script>
+		alert("¾ÆÀÌµğ°¡ ¸ÂÁö ¾Ê½À´Ï´Ù");
+		history.go(-1);
+	</script>
+	<%
+	}
+	}
+	%>
+</body>
+</html>

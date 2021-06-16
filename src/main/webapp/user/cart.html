@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">  
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <div class="top">
+        <div class="top__search">
+          <li><input type="text"></li>
+          <li><a href=""><i class="fas fa-search"></i></a></li>
+        </div>
+        <ul class="top__list">
+          <li><a href="#">LOGIN</a></li>
+          <li><a href="#">JOIN</a></li>
+          <li><a href="mypage.jsp">MY PAGE</a></li>
+          <li><a href="#">CART</a></li>
+        </ul>
+      </div>
+
+      <div class="logo">
+        <img src="images/pinterest_profile_image.jpg" alt="">
+      </div>
+
+      <nav class="mainbar">
+        <li><a href="#">BEST50</a></li>
+        <li><a href="#">OUTER</a></li>
+        <li><a href="#">TOP</a></li>
+        <li><a href="#">PANTS</a></li>
+        <li><a href="#">SKIRT&DRESS</a></li>
+      </nav>
+    </header>
+    <main>
+      <div class="main_title">
+        <h2>SHOPPING CART</h2>
+      </div>
+      <div class="main_cart">
+        <table class="cart_table">
+          <colgroup>
+            <col style="width: 25px;">
+            <col style="width: 95px;">
+            <col style="width: auto;">
+            <col style="width: 95px;">
+            <col style="width: 75px;">
+            <col style="width: 95px;">
+            <col style="width: 95px;">
+            <col style="width: 95px;">
+            <col style="width: 110px;">
+          </colgroup>
+          <thead>
+            <tr>
+              <td scope="col"><input type="checkbox"></td>
+              <td scope="col">이미지</td>
+              <td scope="col">상품정보</td>
+              <td scope="col">판매가</td>
+              <td scope="col">수량</td>
+              <td scope="col">적립금</td>
+              <td scope="col">배송비</td>
+              <td scope="col">합계</td>
+              <td scope="col">선택</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><img src="images/top_1.jpg" alt=""></td>
+              <td>
+                <ul>
+                  <li><strong>띵스t(3 color)</strong></li>
+                  <li>[옵션선택: navy]</li>
+                  <li><input type="button" value="옵션변경"></li>
+                </ul>
+              </td>
+              <td>20,000</td>
+              <td>
+                <ul>
+                  <li><input type="number" style="width: 50px;"></li>
+                  <li><input type="button" value="변경"></li>
+                </ul>
+              </td>
+              <td>500</td>
+              <td>3,000</td>
+              <td>23,000</td>
+              <td>
+                <ul>
+                  <li><input type="button" value="주문하기"></li>
+                  <li><input type="button" value="삭제"></li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr align="right">
+              <td colspan="9">상품구매금액 20,000 + 배송비 3,000 = 합계: <strong>23,000won</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </main>
+    <br><br><br>
+    <footer>
+      <div class="info1">
+        <li>
+          <h3>about us</h3>
+          <p>company: MOODON</p>
+          <p>business no: 123-45-67890</p>
+          <p>tel. 02-1111-1111</p>
+          <p>address: 부산광역시 그린구 그린로 123</p>
+          <p><i>Copyright. MOODON all rights reserved.</i></p>
+        </li>
+        <li>
+          <h3>C/S CENTER</h3>
+          <p><strong>02-1111-1111</strong></p>
+          <p>mon-fri pm1:00~pm6:00</p>
+          <p>sat, sun, holiday off</p>
+        </li>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
