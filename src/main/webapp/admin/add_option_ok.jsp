@@ -1,3 +1,4 @@
+<%@page import="myUtil.HanConv"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -18,8 +19,8 @@ if("<%=verified%>" != "verified"){
 <%
 	//리퀘스트 값들을 받아옴
 	int item_number = Integer.parseInt((String)request.getParameter("item_number"));
-	String option1 = (String)request.getParameter("option1");
-	String option2 = (String)request.getParameter("option2");
+	String option1 = HanConv.toKor((String)request.getParameter("option1"));
+	String option2 = HanConv.toKor((String)request.getParameter("option2"));
 	int sell = Integer.parseInt((String)request.getParameter("sell"));
 	int remains = Integer.parseInt((String)request.getParameter("remains"));
 	
@@ -37,7 +38,7 @@ if("<%=verified%>" != "verified"){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		pstmt = con.prepareStatement("insert into option values(?,?,?,?,?)");
+		pstmt = con.prepareStatement("insert into options values(?,?,?,?,?)");
 		pstmt.setInt(1, item_number);
 		pstmt.setString(2, option1);
 		pstmt.setString(3, option2);
@@ -53,6 +54,12 @@ if("<%=verified%>" != "verified"){
 		e.printStackTrace();
 		System.out.println("옵션 추가 실패");
 	}			
+	
+	out.println(item_number);
+	out.println(option1);
+	out.println(option2);
+	out.println(sell);
+	out.println(remains);
 			
 %>
 <script>

@@ -72,12 +72,13 @@ td{
 			
 			//옵션이 있는 지 조회하고 있으면 하나씩 추가하자
 				try{
-					pstmt = con.prepareStatement("select * from option where item_number=?");
-					
-					pstmt.setInt(1,rs.getInt(1));
 					ResultSet rs_o = null;
+					pstmt = con.prepareStatement("select * from options where item_number=?");
+					pstmt.setInt(1,rs.getInt(1));
+					rs_o = pstmt.executeQuery();
+					
 					while(rs_o.next()){
-						out.write("<td>"+rs_o.getString("option1")+rs_o.getString("option2")+rs_o.getInt("sell")+rs_o.getInt("reamains")+"</td>");
+						out.write("<td>옵션1:"+rs_o.getString("option1")+"<br>옵션2:"+rs_o.getString("option2")+"<br>판매량:"+rs_o.getInt("sells")+"<br>재고량:"+rs_o.getInt("remains")+"</td>");
 					}
 					System.out.println("옵션조회 성공");
 				}catch(Exception e){
