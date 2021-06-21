@@ -148,18 +148,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `team2_db`.`notic`
+-- Table `team2_db`.`notice`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `team2_db`.`notic` (
+CREATE TABLE IF NOT EXISTS `team2_db`.`notice` (
   `n_num` INT NOT NULL,
   `n_title` VARCHAR(500) NOT NULL,
   `n_content` VARCHAR(1000) NOT NULL,
   `n_date` DATE NULL,
-  `n_hit` INT NULL DEFAULT 0,
   `u_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`n_num`),
-  INDEX `fk_notic_user1_idx` (`u_id` ASC) VISIBLE,
-  CONSTRAINT `fk_notic_user1`
+  INDEX `fk_notice_user1_idx` (`u_id` ASC) VISIBLE,
+  CONSTRAINT `fk_notice_user1`
     FOREIGN KEY (`u_id`)
     REFERENCES `team2_db`.`user` (`u_id`)
     ON DELETE NO ACTION
@@ -193,14 +192,34 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2_db`.`faq` (
   `f_num` INT NOT NULL,
+  `f_category` VARCHAR(100) NULL,
   `f_title` VARCHAR(500) NOT NULL,
   `f_content` VARCHAR(1000) NOT NULL,
-  `f_date` DATE NULL,
-  `f_hit` INT NULL DEFAULT 0,
   `u_id` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`f_num`),
   INDEX `fk_faq_user1_idx` (`u_id` ASC) VISIBLE,
   CONSTRAINT `fk_faq_user1`
+    FOREIGN KEY (`u_id`)
+    REFERENCES `team2_db`.`user` (`u_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `team2_db`.`comment`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `team2_db`.`comment` (
+  `com_num` INT NOT NULL,
+  `com_table` VARCHAR(45) NULL,
+  `com_content` VARCHAR(1000) NULL,
+  `com_ref` INT NULL,
+  `com_step` INT NULL,
+  `com_level` INT NULL,
+  `table_num` INT NULL,
+  `u_id` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`com_num`),
+    INDEX `fk_comment_user1_idx` (`u_id` ASC) VISIBLE,
+  CONSTRAINT `fk_comment_user1`
     FOREIGN KEY (`u_id`)
     REFERENCES `team2_db`.`user` (`u_id`)
     ON DELETE NO ACTION

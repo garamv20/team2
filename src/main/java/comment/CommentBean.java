@@ -1,4 +1,4 @@
-package board;
+package comment;
 
 public class CommentBean {
 	private int com_num;
@@ -10,6 +10,7 @@ public class CommentBean {
 	
 	private String u_id;
 	private int table_num;
+	
 	public int getCom_num() {
 		return com_num;
 	}
@@ -58,5 +59,4 @@ public class CommentBean {
 	public void setTable_num(int table_num) {
 		this.table_num = table_num;
 	}
-	
 }

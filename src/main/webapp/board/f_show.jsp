@@ -1,18 +1,56 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="faq.FaqDBBean"%>
 <%@page import="faq.FaqBean"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%
 	String u_id = "";
-	
 	if (request.getParameter("u_id") != null) {
 		u_id = request.getParameter("u_id");
-	} else {
-		response.sendRedirect("faq.jsp");
 	}
-
-	String pageNum = request.getParameter("pageNum");
+	
+	String pageNum = "";
+	
+	if(request.getParameter("pageNum") != null) {
+		pageNum = request.getParameter("pageNum");
+	} else {
+		pageNum = "1";
+	}
+	
+	int f_num = 0;
+	
+	if (request.getParameter("f_num") != null) {
+		f_num = Integer.parseInt(request.getParameter("f_num"));
+	}
+	
+	//해당 글 작성자 
+	String con_id = "";
+	if(request.getParameter("f_id") != null) {
+		con_id = request.getParameter("f_id");
+	}
+	System.out.println(u_id + "   u_id");
+	System.out.println(con_id + "   con_id");
+	
+	FaqDBBean db = FaqDBBean.getInstance();
+	FaqBean fb = null;
+	
+	if(u_id.equals(con_id)) {
+		fb = db.getBoard(f_num,false);
+	} else {
+		fb = db.getBoard(f_num,true);
+	}
+	
+	//관리자
+	int re = db.confirmManager(u_id);
+	
+	String f_title = "", f_content = "", f_id="", f_category="";
+	
+	if ((fb) != null) {
+		f_title = fb.getF_title();
+		f_content = fb.getF_content();
+		f_category = fb.getF_category();
+		f_id = fb.getU_id();
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -76,51 +114,41 @@
 	</header>
 	</div>
 
-<center>
+	<center>
 		<p>
-			<h1>F A Q 글쓰기</h1>	
+		<h1>F A Q</h1>
 		</p>
 		
-		<form action="f_write_ok.jsp?u_id=<%= u_id %>" method="post" name="faq_frm">
-			
-			<table>
-				<tr>
-					<td>제 목 </td>
-					<td colspan="3">
-						<input type="text" name="f_title" class="title">
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					 <label for ="catogory">분류</label>
-					</td>
-					 <td colsapn="3">
-        					<select id="" name="" size="1">
-            				<option value="">선택하세요</option>
-            				<option value="주문/결제">주문/결제</option>
-            				<option value="배송문의">배송문의</option>
-            				<option value="회원관련">회원관련</option>
-            				<option value="취소/교환/반품">취소/교환/반품</option>
-        					</select>
-        			</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<textarea rows="15" cols="150" name="f_content"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="center">
-						<div class="w_button">
-							<input type="button" value="쓰기" onclick="write_ok()"> &nbsp;
-							<input type="reset" value="다시작성">&nbsp;
-							<input type="button" value="목록으로" onclick="location.href='faq.jsp?u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
-						</div>
+<div id="s_list">		
+	<form method="post" action="f_delete_ok.jsp?f_num=<%= f_num %>&u_id=<%= u_id %>&pageNum=<%= pageNum %>"
+			name="show_frm">
+		<table>
+			<tr>
+				<td>제  목 <%= f_title %></td>
+			</tr>
+			<tr>
+				<td>내  용   <%= f_content %></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="s_button">
+			<% 
+                	if( re == 0 ) {
+             %>
+				<input type="button" value="수정" onclick="location.href='f_edit.jsp?f_num=<%= f_num %>&u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
+				&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="button" value="삭제" onclick="delete_ok()"> &nbsp;&nbsp;&nbsp;&nbsp;
+			<%
+             	  	}
+          	 %>
+				<input type="button" value="목록으로" onclick="location.href='faq.jsp?u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
+			</div>
 					</td>
 				</tr>
 			</table>
-		</form>
+			<br>
+	</form>
+</div>
 	</center>
 
 	<footer>
@@ -145,5 +173,6 @@
 			</li>
 		</div>
 	</footer>
+
 </body>
 </html>

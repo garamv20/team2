@@ -1,21 +1,21 @@
-package board;
+package review;
 
 import java.sql.Timestamp;
 
 public class ReviewBean {
-	private int r_num; //ï¿½ï¿½ ï¿½ï¿½È£
-	private String r_title; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-	private String r_content; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-	private String r_img; // ï¿½ï¿½ï¿½ï¿½
-	private int r_grade; //ï¿½ï¿½ï¿½ï¿½
-	private Timestamp r_date; //ï¿½Û¼ï¿½ï¿½ï¿½
-	private int r_hit; //ï¿½ï¿½È¸ï¿½ï¿½
-	private int r_like;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½
+	private int r_num; //±Û ¹øÈ£
+	private String r_title; //±Û Á¦¸ñ
+	private String r_content; //±Û ³»¿ë
+	private String r_img; // »çÁø
+	private int r_grade; //º°Á¡
+	private Timestamp r_date; //ÀÛ¼ºÀÏ
+	private int r_hit; //Á¶È¸¼ö
+	private int r_like;//¸®ºä ÁÁ¾Æ¿ä
 	
-	private String product;//ï¿½ï¿½Ç°ï¿½ï¿½È£
-	private String u_id; //ï¿½Û¼ï¿½ï¿½ï¿½
+	private int item_num;//»óÇ°¹øÈ£
+	private String u_id; //ÀÛ¼ºÀÚ
 	
-	/*--ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ ï¿½Îºï¿½--*/
+	/*--ÆäÀÌÂ¡ Ã³¸® ºÎºÐ--*/
 	public static int pageSize = 10;
 	public static int pageCount = 1;
 	public static int pageNum = 1;
@@ -26,7 +26,7 @@ public class ReviewBean {
 		int startPage = pageNum - temp;
 		
 		if((startPage - limit) > 0) {
-			str = "<a href='#?u_id=" + u_id + "&pageNum=" + (startPage - 1) + "'><< ï¿½ï¿½ï¿½ï¿½</a>;";
+			str = "<a href='#?u_id=" + u_id + "&pageNum=" + (startPage - 1) + "'><< ÀÌÀü</a>;";
 		}
 		
 		for (int i = startPage; i < (startPage + limit); i++) {
@@ -42,7 +42,7 @@ public class ReviewBean {
 		}
 		
 		if((startPage + limit) <= pageCount) {
-			str += "<a href='#p?u_id=" + u_id + "&pageNum=" + (startPage + limit) + "'>ï¿½ï¿½ï¿½ï¿½ >></a>";
+			str += "<a href='#p?u_id=" + u_id + "&pageNum=" + (startPage + limit) + "'>´ÙÀ½ >></a>";
 		}
 		
 		return str;
@@ -112,12 +112,12 @@ public class ReviewBean {
 		this.r_like = r_like;
 	}
 
-	public String getProduct() {
-		return product;
+	public int getItem_num() {
+		return item_num;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setItem_num(int item_num) {
+		this.item_num = item_num;
 	}
 
 	public String getU_id() {
@@ -127,5 +127,7 @@ public class ReviewBean {
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
+
+
 
 }

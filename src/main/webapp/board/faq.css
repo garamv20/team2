@@ -1,6 +1,5 @@
 @charset "EUC-KR";
-
-/*table  - list.css*/
+/*faq.jsp 테이블*/
 #list {
 	width: 880px;
 	margin: 0 auto;
@@ -17,11 +16,11 @@
 }
 
 #list table tr td:nth-child(1) {
-	width: 130px;
+	width: 80px;
 }
 
 #list table tr td:nth-child(2) {
-	width: 450px;
+	width: 100px;
 	text-align: center;
 	padding-left: 10px;
 	display: block;
@@ -31,13 +30,12 @@
 }
 
 #list table tr td:nth-child(3) {
-	width: 150px;
+	width: 550px;
 }
 
 #list table tr td:nth-child(4) {
 	width: 150px;
 }
-
 
 
  #list table tr td {
@@ -82,14 +80,14 @@
 
 
 
-/*review.jsp 글쓰기 버튼*/
+/*faq.jsp - 글쓰기버튼*/
 #list .write_button {
 	float: right;
-	padding:10px;
+	padding: 20px;
 }
 
 #list .write_button input {
-	width: 70px;
+	width: 90px;
 	height: 30px;
 	border: none;
 	background-color: #64ccc9;
@@ -102,40 +100,7 @@
 	background-color: #abc7ca;
 }
 
-/*별점 */
-.rating .rate_radio {
-	position: relative;
-	display: inline-block;
-	z-index: 20;
-	opacity: 0.001;
-	width: 60px;
-	height: 60px;
-	background-color: #fff;
-	cursor: pointer;
-	vertical-align: top;
-	display: none;
-}
-
-.rating .rate_radio+label {
-	position: relative;
-	display: inline-block;
-	margin-left: -4px;
-	z-index: 10;
-	width: 20px;
-	height: 20px;
-	background-image: url('./img/starrate.png');
-	background-repeat: no-repeat;
-	background-size: 60px 60px;
-	cursor: pointer;
-	background-color: #f0f0f0;
-}
-
-.rating .rate_radio:checked+label {
-	background-color: #64ccc9;
-}
-
-
-/*r_write 테이블 */
+/*write - 글쓰기버튼*/
 .title {
            	width: 300px;
             height: 25px;
@@ -147,11 +112,11 @@
         }
         
         
-/*r_write - button*/
+/*글쓰기 페이지 - button*/
 
 .w_button {
 	float:right;
-	padding:20px;
+	padding: 20px;
 }
 
 .w_button input {
@@ -171,7 +136,7 @@ div input:hover {
 /*show 페이지 - button*/
 .s_button {
 	float:right;
-	padding:10px;
+	padding: 10px;
 }
 
 .s_button input {
@@ -205,6 +170,16 @@ div input:hover {
 	text-align: center;
 }
 
+#s_list table tr td:nth-child(1) {
+	width: 80px;
+}
+
+#s_list table tr td:nth-child(2) {
+	width: 120px;
+	text-align: center;
+	padding-left: 10px;
+
+}
 
 #s_list table tr td {
     border-bottom: 1px solid #ccc;
@@ -245,17 +220,19 @@ div input:hover {
 
 .e_button {
 	float:right;
-	padding:20px;
+	padding: 20px;
 }
+
 .e_button input {
-	width: 98px;
-	height: 27px;
+	width: 90px;
+	height: 30px;
 	border: none;
 	background-color: #64ccc9;
 	border-radius: 0.2em;
 	color: black;
 	font-size: 15px;
 }
+
 div input:hover {
 	background-color: #abc7ca;
 }

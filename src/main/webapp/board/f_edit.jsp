@@ -1,6 +1,5 @@
 <%@page import="faq.FaqDBBean"%>
 <%@page import="faq.FaqBean"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%
@@ -11,7 +10,24 @@
 	} else {
 		response.sendRedirect("faq.jsp");
 	}
-
+	
+	int f_num = 0;
+	
+	if (request.getParameter("f_num") != null) {
+		f_num = Integer.parseInt(request.getParameter("f_num"));
+	}
+	
+	FaqDBBean db = FaqDBBean.getInstance();
+	FaqBean faq = db.getBoard(f_num, false);
+	
+	if(!u_id.equals(faq.getU_id())) {
+%>
+	<script>
+			history.go(-1);
+	</script>
+<%
+	}
+	/*--pageNum값 받기--*/
 	String pageNum = request.getParameter("pageNum");
 %>
 <!DOCTYPE html>
@@ -19,12 +35,14 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+	<script type="text/javascript" src="faq.js" charset="utf-8"></script>
 	<link rel="stylesheet" href="board.css" type="text/css">
 	<link rel="stylesheet" href="faq.css" type="text/css">
-	<script type="text/javascript" src="faq.js" charset="utf-8"></script>
 	<script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+
 	<div id="wrap">
 		<header>
 			<div class="top">
@@ -73,47 +91,34 @@
 			</ul>
 		</div>
 	</div>
-	</header>
-	</div>
-
-<center>
-		<p>
-			<h1>F A Q 글쓰기</h1>	
-		</p>
-		
-		<form action="f_write_ok.jsp?u_id=<%= u_id %>" method="post" name="faq_frm">
-			
+</header>
+</div>
+	
+	<center>
+		<form action="f_write_ok.jsp?u_id=<%= u_id %>&f_num=<%= f_num %>" method="post">
 			<table>
 				<tr>
-					<td>제 목 </td>
+					<td>글제목</td>
 					<td colspan="3">
-						<input type="text" name="f_title" class="title">
+						<input type="text" value="<%= faq.getF_title() %>" class="title">
 					</td>
 				</tr>
-				
 				<tr>
-					<td>
-					 <label for ="catogory">분류</label>
-					</td>
-					 <td colsapn="3">
-        					<select id="" name="" size="1">
-            				<option value="">선택하세요</option>
-            				<option value="주문/결제">주문/결제</option>
-            				<option value="배송문의">배송문의</option>
-            				<option value="회원관련">회원관련</option>
-            				<option value="취소/교환/반품">취소/교환/반품</option>
-        					</select>
-        			</td>
+					<td>글분류</td>
+					<td><input type="text" size="30"
+						value="<%= faq.getF_category() %>"></td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<textarea rows="15" cols="150" name="f_content"></textarea>
+						<textarea rows="5" cols="70">
+							<%= faq.getF_content() %>
+						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" align="center">
-						<div class="w_button">
-							<input type="button" value="쓰기" onclick="write_ok()"> &nbsp;
+						<div class="e_button">
+							<input type="button" value="수정하기" onclick="write_ok()">&nbsp; 
 							<input type="reset" value="다시작성">&nbsp;
 							<input type="button" value="목록으로" onclick="location.href='faq.jsp?u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
 						</div>
@@ -145,5 +150,6 @@
 			</li>
 		</div>
 	</footer>
+
 </body>
 </html>

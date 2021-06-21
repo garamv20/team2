@@ -1,6 +1,3 @@
-<%@page import="faq.FaqDBBean"%>
-<%@page import="faq.FaqBean"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%
@@ -9,9 +6,9 @@
 	if (request.getParameter("u_id") != null) {
 		u_id = request.getParameter("u_id");
 	} else {
-		response.sendRedirect("faq.jsp");
+		response.sendRedirect("q_write.jsp");
 	}
-
+	
 	String pageNum = request.getParameter("pageNum");
 %>
 <!DOCTYPE html>
@@ -20,10 +17,10 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="board.css" type="text/css">
-	<link rel="stylesheet" href="faq.css" type="text/css">
-	<script type="text/javascript" src="faq.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="qna.css" type="text/css">
 	<script src="https://kit.fontawesome.com/60f6a26247.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<div id="wrap">
 		<header>
@@ -33,17 +30,18 @@
 					<li><a href=""><i class="fas fa-search"></i></a></li>
 				</div>
 				<ul class="top__list">
-
+					<!--   로그인 상태는 > HOME 
+       		 비로그인 상태는 > LOGIN 보이게  -->
 					<% 
-        	if(u_id==null){
-        %>
+        if(u_id==null){
+        	%>
 					<li><a href="Login.jsp">LOGIN</a></li>
 					<%  
-        	}else{
-        %>
+        }else{
+        	%>
 					<li><a href="Main.jsp">HOME</a></li>
 					<% 
-        	}
+        }
         %>
 					<li><a href="#">JOIN</a></li>
 					<li><a href="mypage.jsp">MY PAGE</a></li>
@@ -76,48 +74,32 @@
 	</header>
 	</div>
 
+
 <center>
-		<p>
-			<h1>F A Q 글쓰기</h1>	
-		</p>
-		
-		<form action="f_write_ok.jsp?u_id=<%= u_id %>" method="post" name="faq_frm">
-			
+	<P>
+		<h2>Q&A 글쓰기</h2>
+	</P>
+	
+	
+		<form action="q_write_ok.jsp?u_id=<%= u_id %>" method="post">
 			<table>
 				<tr>
-					<td>제 목 </td>
-					<td colspan="3">
-						<input type="text" name="f_title" class="title">
+					<td>제 목 <input type="text" name="" class="title">
 					</td>
-				</tr>
-				
-				<tr>
-					<td>
-					 <label for ="catogory">분류</label>
-					</td>
-					 <td colsapn="3">
-        					<select id="" name="" size="1">
-            				<option value="">선택하세요</option>
-            				<option value="주문/결제">주문/결제</option>
-            				<option value="배송문의">배송문의</option>
-            				<option value="회원관련">회원관련</option>
-            				<option value="취소/교환/반품">취소/교환/반품</option>
-        					</select>
-        			</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<textarea rows="15" cols="150" name="f_content"></textarea>
+						<textarea rows="15" cols="150">
+						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" align="center">
-						<div class="w_button">
-							<input type="button" value="쓰기" onclick="write_ok()"> &nbsp;
-							<input type="reset" value="다시작성">&nbsp;
-							<input type="button" value="목록으로" onclick="location.href='faq.jsp?u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
-						</div>
-					</td>
+					<div class="w_button">
+						<input type="button" value="글쓰기" onclick="">&nbsp;
+						<input type="reset" value="다시작성">&nbsp;
+						<input type="button" value="글목록" onclick="location.href='qna.jsp?u_id=<%= u_id %>&pageNum=<%= pageNum %>'">
+					</div>
 				</tr>
 			</table>
 		</form>
@@ -145,5 +127,7 @@
 			</li>
 		</div>
 	</footer>
+
+
 </body>
 </html>

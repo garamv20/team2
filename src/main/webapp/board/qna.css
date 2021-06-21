@@ -14,14 +14,20 @@
 	border-spacing: 0;
 	font-size: 14px;
 	text-align: center;
+	
 }
 
 #list table tr td:nth-child(1) {
-	width: 130px;
+	width: 80px;
 }
 
 #list table tr td:nth-child(2) {
-	width: 450px;
+	width: 110px;
+	
+}
+
+#list table tr td:nth-child(3) {
+	width: 480px;
 	text-align: center;
 	padding-left: 10px;
 	display: block;
@@ -30,17 +36,15 @@
 	text-overflow: ellipsis;
 }
 
-#list table tr td:nth-child(3) {
-	width: 150px;
-}
-
 #list table tr td:nth-child(4) {
-	width: 150px;
+	width: 120px;
+}
+#list table tr td:nth-child(5) {
+	width: 90px;
 }
 
 
-
- #list table tr td {
+#list table tr td {
             border-bottom: 1px solid #ccc;
             padding: 10px 0;
         }
@@ -82,10 +86,12 @@
 
 
 
-/*review.jsp 글쓰기 버튼*/
+
+
+/*qna.jsp - 글쓰기버튼*/
 #list .write_button {
 	float: right;
-	padding:10px;
+	padding: 20px;
 }
 
 #list .write_button input {
@@ -93,7 +99,7 @@
 	height: 30px;
 	border: none;
 	background-color: #64ccc9;
-	border-radius: 0.2em;
+	border-radius: 0.1em;
 	color: black;
 	font-size: 15px;
 }
@@ -102,42 +108,10 @@
 	background-color: #abc7ca;
 }
 
-/*별점 */
-.rating .rate_radio {
-	position: relative;
-	display: inline-block;
-	z-index: 20;
-	opacity: 0.001;
-	width: 60px;
-	height: 60px;
-	background-color: #fff;
-	cursor: pointer;
-	vertical-align: top;
-	display: none;
-}
 
-.rating .rate_radio+label {
-	position: relative;
-	display: inline-block;
-	margin-left: -4px;
-	z-index: 10;
-	width: 20px;
-	height: 20px;
-	background-image: url('./img/starrate.png');
-	background-repeat: no-repeat;
-	background-size: 60px 60px;
-	cursor: pointer;
-	background-color: #f0f0f0;
-}
-
-.rating .rate_radio:checked+label {
-	background-color: #64ccc9;
-}
-
-
-/*r_write 테이블 */
+/*n_write 테이블 */
 .title {
-           	width: 300px;
+           	width: 400px;
             height: 25px;
             border: none;
             border-bottom: 1px solid #abc7ca;
@@ -147,7 +121,7 @@
         }
         
         
-/*r_write - button*/
+/*글쓰기 페이지 - button*/
 
 .w_button {
 	float:right;
@@ -169,13 +143,14 @@ div input:hover {
 }
 
 /*show 페이지 - button*/
+
 .s_button {
 	float:right;
-	padding:10px;
+	padding:20px;
 }
 
 .s_button input {
-	width: 90px;
+	width: 80px;
 	height: 30px;
 	border: none;
 	background-color: #64ccc9;
@@ -189,6 +164,20 @@ div input:hover {
 }
 
 
+/*show 페이지 - 댓글 button*/
+
+.c_button {
+	width: 50px;
+	height: 50px;
+	border: none;
+	background-color: #64ccc9;
+	border-radius: 0.2em;
+	color: black;
+	font-size: 15px;
+}
+
+
+/* show */
 
 #s_list {
 	width: 880px;
@@ -221,10 +210,23 @@ div input:hover {
             border-top: none;
             border-bottom: none;
         }
-
-        #s_list table tr:last-child td {
-            border-bottom: 1px solid rgb(39, 83, 165);
+		#s_list .title {
+            font-size: 20px;
         }
+
+
+        #s_list table tr:first-child td .con_etc {
+            font-size: 12px;
+            font-weight: normal;
+			padding-right:10px;
+            float: right;
+        }
+
+        #s_list table tr:first-child td .con_etc .date {
+            padding-right: 5px;
+        }
+
+
         
 
         #s_list .page {
@@ -239,16 +241,15 @@ div input:hover {
 
 
 
-
-
 /*edit 페이지 - button*/
 
 .e_button {
 	float:right;
 	padding:20px;
 }
+
 .e_button input {
-	width: 98px;
+	width: 100px;
 	height: 27px;
 	border: none;
 	background-color: #64ccc9;
@@ -256,6 +257,20 @@ div input:hover {
 	color: black;
 	font-size: 15px;
 }
+
 div input:hover {
 	background-color: #abc7ca;
+}
+
+/*댓글*/
+#comment {
+        width: 960px;
+        margin: 0 auto;
+        margin-bottom: 80px;
+        align-content: center;
+}
+        
+        
+#comment form table {
+        border-spacing: 0;
 }
