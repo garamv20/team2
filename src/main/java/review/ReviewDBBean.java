@@ -33,8 +33,8 @@ public class ReviewDBBean {
 		Connection conn=null;
 		try{
 			String url= "jdbc:mysql://localhost:3306/team2_db";
-			String user= "root";
-			String password= "root";
+			String user = "team2";
+			String password = "1234";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn= DriverManager.getConnection(url, user, password);
 		}catch(SQLException ex){
