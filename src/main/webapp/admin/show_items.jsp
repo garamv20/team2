@@ -105,6 +105,7 @@ td{
 	}catch(Exception e){
 		show_items_success = false;
 		System.out.println("상품 조회 실패");
+		e.printStackTrace();
 	}
 %>
 
