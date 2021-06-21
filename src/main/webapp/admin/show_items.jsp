@@ -28,7 +28,7 @@ table{
 td{
 	border: 1px solid black;
 	padding: 10px;
-	min-width: 80px;
+	min-width: 100px;
 	text-align: right;
 }
 </style>
@@ -43,6 +43,8 @@ td{
 <td>할인률</td>
 <td>등록일</td>
 <td>메모</td>
+<td>상품사진</td>
+<td>상품설명 사진</td>
 </tr>
 
 <%
@@ -68,7 +70,10 @@ td{
 					+ "<td>"+rs.getInt(4)+"</td>"
 					+ "<td>"+rs.getInt(5)+"</td>"
 					+ "<td>"+rs.getDate(6)+"</td>"
-					+ "<td>"+rs.getString(7)+"</td>");
+					+ "<td>"+rs.getString(7)+"</td>"
+					+ "<td><img src='D://team2/"+rs.getInt(1)+".png' width='100px'></td>" 
+					+ "<td><img src='D://team2/"+rs.getInt(1)+"ex.png' width='100px'></td>" 
+					);
 			
 			//옵션이 있는 지 조회하고 있으면 하나씩 추가하자
 				try{
@@ -78,7 +83,10 @@ td{
 					rs_o = pstmt.executeQuery();
 					
 					while(rs_o.next()){
-						out.write("<td>옵션1:"+rs_o.getString("option1")+"<br>옵션2:"+rs_o.getString("option2")+"<br>판매량:"+rs_o.getInt("sells")+"<br>재고량:"+rs_o.getInt("remains")+"</td>");
+						out.write("<td>옵션1:"+rs_o.getString("option1")
+						+"<br>옵션2:"+rs_o.getString("option2")
+						+"<br>판매량:"+rs_o.getInt("sells")
+						+"<br>재고량:"+rs_o.getInt("remains")+"</td>");
 					}
 					System.out.println("옵션조회 성공");
 				}catch(Exception e){
@@ -86,7 +94,8 @@ td{
 					e.printStackTrace();
 				}
 			
-			out.write("<td><a href='add_option.jsp?item_number="+rs.getInt(1)+"'>옵션 추가</a></td>"
+			out.write("<td><a href='delete_option_ok.jsp?item_number="+rs.getInt(1)+"'>옵션 삭제</a></td>"
+					+ "<td><a href='add_option.jsp?item_number="+rs.getInt(1)+"'>옵션 추가</a></td>"
 					+ "<td><a href='edit_item.jsp?item_number="+rs.getInt(1)+"'>수정</a></td>"
 					+ "<td><a href='delete_item_ok.jsp?item_number="+rs.getInt(1)+"'>삭제</a></td></tr>");
 		}

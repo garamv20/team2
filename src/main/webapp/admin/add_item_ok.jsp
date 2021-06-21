@@ -1,3 +1,6 @@
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.io.File"%>
+<%@page import="java.util.Enumeration"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.sql.Date"%>
 <%@page import="myUtil.HanConv"%>
@@ -23,13 +26,19 @@
 <%
 	boolean add_success = false;
 
+	//파일 업로드 객체//////////////////일단 절대경로에 이미지 파일 저장 D:/team2/
+	MultipartRequest multi = new MultipartRequest(request, "D:/team2/", 1024*1024*50);
+	Enumeration<String> parameters = multi.getParameterNames();
+
 	//앞의 페이지에서 폼 값들을 받아온다.
-	String item_type = HanConv.toKor((String)request.getParameter("item_type"));
-	String item_name = HanConv.toKor((String)request.getParameter("item_name"));
-	int item_price = Integer.parseInt((String)request.getParameter("item_price"));
-	double item_discount_rate = Double.parseDouble((String)request.getParameter("item_discount_rate"));
-	String item_memo = HanConv.toKor((String)request.getParameter("item_memo"));
+	String item_type = HanConv.toKor((String)multi.getParameter("item_type"));
+	String item_name = HanConv.toKor((String)multi.getParameter("item_name"));
+	int item_price = Integer.parseInt((String)multi.getParameter("item_price"));
+	double item_discount_rate = Double.parseDouble((String)multi.getParameter("item_discount_rate"));
+	String item_memo = HanConv.toKor((String)multi.getParameter("item_memo"));
 	
+	//상품번호, DB에 추가할 때도, 파일명을 정할 때도 쓰인다.
+	int insert_item_number=0;
 	try{
 		//MySQL 접속, team2/1234r
 		String url = "jdbc:mysql://localhost:3306/team2_db";
@@ -43,7 +52,6 @@
 		
 		//마지막 번호 찾기
 		int max_item_number = 0;	//없으면 0
-		int insert_item_number;
 		pstmt = con.prepareStatement("select max(item_number) from items");
 		rs = pstmt.executeQuery();
 		if(rs.next()){
@@ -70,6 +78,30 @@
 		e.printStackTrace();
 		System.out.println("상품 추가 실패");
 	}
+	
+	//파일 이름 바꾸기 - itme_number로
+	Enumeration<String> files = multi.getFileNames();
+	while (files.hasMoreElements()) {
+	String fileName = files.nextElement();
+	String original = multi.getOriginalFileName(fileName);
+	String realFileName = null;
+
+	try{
+		int i = -1;
+	    i = original.lastIndexOf(".");
+	    if(fileName.equals("item_image")){
+		    realFileName = insert_item_number + ".png";
+	    }
+	    if(fileName.equals("item_explain_image")){
+		    realFileName = insert_item_number + "ex.png";
+	    }
+	    
+		File oldFile = new File("D:/team2/" + original);
+		File newFile = new File("D:/team2/" + realFileName);
+		oldFile.renameTo(newFile);
+	}catch(Exception e){
+	}
+}
 %>
 
 

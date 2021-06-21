@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form name="form" method="post" action="add_item_ok.jsp">
+<form name="form" method="post" action="add_item_ok.jsp" enctype="Multipart/form-data">
 <table>
 <tr><td>상품종류</td>
 <td><select name="item_type">

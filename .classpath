@@ -35,5 +35,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-jcl-5.2.14.RELEASE.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-web-5.2.14.RELEASE.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.25.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
