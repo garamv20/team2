@@ -1,0 +1,35 @@
+관리자 부문 메모
+
+1. 환경 설정
+테이블 생성 및 관리자 생성
+admin 테이블 생성 및 사용자 아이디 추가 SQL
+
+CREATE TABLE IF NOT EXISTS 'team2_db'.'admin'(
+	'admin_id' VARCHAR(100) NOT NULL,
+	'admin_password' VARCHAR(100) NOT NULL
+)
+ENGINE = InnoDB;
+
+INSERT INTO admin VALUES(admin, 1234);
+
+
+
+2. 실행
+main.jsp 또는 login.jsp 실행 하여 로그인 (admin/1234)
+
+
+
+3. 상품 관리
+show_items.jsp
+상품 추가, 수정, 삭제, 옵션 추가/삭제
+상품 사진 및 상품설명 사진은 현재 임의로 지정한 절대경로(D:/team2/)에 저장됨.
+파일명은 상품번호(item_number)로 저장되며 파일형식은 png로 저장되도록 함.
+상품 사진 : 1.png
+상품설명 사진 : 1ex.png
+와 같이 저장됨.
+
+
+
+4. 매출(주문) 관리
+show_orders.jsp
+현재 미완성
